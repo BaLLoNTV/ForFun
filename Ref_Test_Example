@@ -1,0 +1,24 @@
+#include <iostream>
+
+void foo(int& i) 
+{ 
+    std::cout << 1 << std::endl; 
+};
+void foo(int&& i)
+{
+    std::cout << 2 << std::endl; 
+};
+template<typename T>
+void f1(T&& i) { foo(i); };
+template<typename T>
+void f2(T&& i) { foo(std::move(i)); };
+template<typename T>
+void f3(T&& i) { foo(std::forward<T>(i)); };
+int main()
+{
+    int x = 1;
+    foo(x); foo(42);
+    f1(x); f1(42);
+    f2(x); f2(42);
+    f3(x); f3(42);
+}
