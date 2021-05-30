@@ -104,7 +104,7 @@ int main()
 {
     A a;
     B b;
-    std::function<A(int)> func = [=](int x)
+    std::function<A(int)> func = [a = a, b = b.operator A()](int x)
     {
         //A *a = new A();
         //B *b = new B();
@@ -116,8 +116,9 @@ int main()
         }
         else
         {
+            return b;
             //return *b;
-            return b.operator A();
+            //return b.operator A();
         }
     };
     A c = func(0);
