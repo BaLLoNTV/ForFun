@@ -30,6 +30,11 @@ struct A
         std::cout << "A& operator=(A&)" << std::endl;
         return *this;
     }
+    A& operator=(const A& p)
+    {
+        std::cout << "A& operator=(const A&)" << std::endl;
+        return *this;
+    }
     A& operator=(A&& p) noexcept
     {
         std::cout << "A& operator=(A&&)" << std::endl;
@@ -74,6 +79,11 @@ struct B
     B& operator=(B& p) 
     {
         std::cout << "B& operator=(B&)" << std::endl;
+        return *this;
+    }
+    B& operator=(const B& p)
+    {
+        std::cout << "B& operator=(const B&)" << std::endl;
         return *this;
     }
     B& operator=(B&& p) noexcept
