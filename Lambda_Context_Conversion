@@ -110,10 +110,23 @@ struct C : A
     int d = 2;
 };
 
+
+A foo()
+{
+    return B();
+}
+
+void foo(const B x)
+{
+    A a = x;
+}
+
 int main()
 {
     A a;
     B b;
+    A v = foo();
+    foo(b);
     std::function<A(int)> func = [a = a, b = b.operator A()](int x)
     {
         //A *a = new A();
